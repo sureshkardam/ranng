@@ -48,8 +48,8 @@ if ( ! empty( $product_tabs ) ) : ?>
 					continue;
 				}
 				?>
-				<div
-					class="c-product__tabs-item <?php echo esc_attr( $key ); ?>_tab <?php if ( $expand_first_tab && ! $index ) { ?> active<?php } ?>">
+				<?php /*<div class="c-product__tabs-item <?php echo esc_attr( $key ); ?>_tab <?php if ( $expand_first_tab && ! $index ) { ?> active<?php } ?>">*/ ?>
+				<div class="c-product__tabs-item <?php echo esc_attr( $key ); ?>_tab active">
 					<a onclick="return false" class="c-product__tabs-item-link js-tabs-item-link"
 					   href="#tab-<?php echo esc_attr( $key ); ?>">
 						<div class="c-product__tabs-item-header">
@@ -58,7 +58,8 @@ if ( ! empty( $product_tabs ) ) : ?>
 						<i class="ip-plus c-product__tabs-item-expand"></i>
 					</a>
 					<div class="c-product__tabs-panel <?php if ( $key == 'description' ) { ?>entry-content<?php } ?>"
-					     id="tab-<?php echo esc_attr( $key ); ?>" <?php if ( $expand_first_tab && ! $index ) { ?> style="display:block;"<?php } ?>>
+     					id="tab-<?php echo esc_attr( $key ); ?>" style="display:block;">
+
 						<?php echo ideapark_wrap( $tab_content ); ?>
 					</div>
 				</div>
