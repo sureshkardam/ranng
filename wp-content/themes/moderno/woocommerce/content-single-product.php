@@ -142,9 +142,9 @@ $is_boxed = ideapark_mod( 'product_grid_width' ) == 'boxed' || is_product() && i
 		 * @hooked woocommerce_upsell_display - 15
 		 * @hooked woocommerce_output_related_products - 20
 		 */
-		do_action( 'woocommerce_after_single_product_summary' );
+		//do_action( 'woocommerce_after_single_product_summary' );
 		?>
 	</div>
 </div>
 
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+<?php //do_action( 'woocommerce_after_single_product' ); ?>
