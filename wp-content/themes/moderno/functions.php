@@ -4174,6 +4174,10 @@ function moderno_enqueue_category_toggle_script() {
     }
 }
 add_action('wp_enqueue_scripts', 'moderno_enqueue_category_toggle_script');
-
-
-
+function moderno_output_product_sku() {
+    global $product;
+    if ( $product && $product->get_sku() ) {
+        echo '<div class="moderno-product-sku">Code: ' . esc_html( $product->get_sku() ) . '</div>';
+    }
+}
+add_action( 'woocommerce_shop_loop_item_sku', 'moderno_output_product_sku', 5 );

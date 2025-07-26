@@ -51,6 +51,13 @@ if ( empty( $product ) || false === wc_get_loop_product_visibility( $product->ge
 	do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**
+	 * sku added after title
+	 */
+
+	do_action( 'woocommerce_shop_loop_item_sku' );
+
+
+	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.
 	 *
 	 * @hooked woocommerce_template_loop_rating - 5
