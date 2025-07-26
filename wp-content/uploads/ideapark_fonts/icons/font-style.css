@@ -1,0 +1,165 @@
+@font-face {
+	font-family: "icons"; 
+src: url("icons/icons.eot?v=1752154999");
+src:url("icons/icons.eot?v=1752154999#iefix") format("embedded-opentype"),
+url("icons/icons.woff?v=1752154999") format("woff2"),
+url("icons/icons.woff?v=1752154999") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+i[class^="fi-bd21"], [class*=" fi-bd21"] {
+	display: inline-block;
+	
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+	font-family: "icons";
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+	speak: none;
+}
+
+
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cotton:before {
+    content: "\f101";
+}
+.icon-delivery:before {
+    content: "\f102";
+}
+.icon-discount:before {
+    content: "\f103";
+}
+.icon-dot:before {
+    content: "\f104";
+}
+.icon-email:before {
+    content: "\f105";
+}
+.icon-hamburger:before {
+    content: "\f106";
+}
+.icon-map-pin:before {
+    content: "\f107";
+}
+.icon-moneyback-2:before {
+    content: "\f108";
+}
+.icon-moneyback:before {
+    content: "\f109";
+}
+.icon-phone:before {
+    content: "\f10a";
+}
+.icon-quality:before {
+    content: "\f10b";
+}
+.icon-romb:before {
+    content: "\f10c";
+}
+.icon-shipping-2:before {
+    content: "\f10d";
+}
+.icon-shipping:before {
+    content: "\f10e";
+}
+.icon-support-2:before {
+    content: "\f10f";
+}
+.icon-support:before {
+    content: "\f110";
+}
+.icon-time:before {
+    content: "\f111";
+}
+.icon-world:before {
+    content: "\f112";
+}
+
+.fi-bd21-cotton:before {
+content: "\F101";
+}
+
+.fi-bd21-delivery:before {
+content: "\F102";
+}
+
+.fi-bd21-discount:before {
+content: "\F103";
+}
+
+.fi-bd21-dot:before {
+content: "\F104";
+}
+
+.fi-bd21-email:before {
+content: "\F105";
+}
+
+.fi-bd21-hamburger:before {
+content: "\F106";
+}
+
+.fi-bd21-map-pin:before {
+content: "\F107";
+}
+
+.fi-bd21-moneyback-2:before {
+content: "\F108";
+}
+
+.fi-bd21-moneyback:before {
+content: "\F109";
+}
+
+.fi-bd21-phone:before {
+content: "\F10A";
+}
+
+.fi-bd21-quality:before {
+content: "\F10B";
+}
+
+.fi-bd21-romb:before {
+content: "\F10C";
+}
+
+.fi-bd21-shipping-2:before {
+content: "\F10D";
+}
+
+.fi-bd21-shipping:before {
+content: "\F10E";
+}
+
+.fi-bd21-support-2:before {
+content: "\F10F";
+}
+
+.fi-bd21-support:before {
+content: "\F110";
+}
+
+.fi-bd21-time:before {
+content: "\F111";
+}
+
+.fi-bd21-world:before {
+content: "\F112";
+}
