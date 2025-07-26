@@ -660,7 +660,7 @@ if ( ! function_exists( 'ideapark_editor_style' ) ) {
 						.editor-post-title__block > div {
 							flex: 1 1 100%
 						}
-						
+
 						.wp-block {
 							max-width: 700px
 						}
@@ -1122,12 +1122,12 @@ if ( ! function_exists( 'ideapark_search_by_sku_ids' ) ) {
 
 		$sku_to_id = $wpdb->get_col( "
 			SELECT pm.post_id
-			FROM {$wpdb->postmeta} pm 
+			FROM {$wpdb->postmeta} pm
 			WHERE pm.meta_key='_sku' AND ( " . implode( " AND ", $_where ) . " )" );
 
 		$sku_to_parent_id = $wpdb->get_col( "
-			SELECT p.post_parent post_id 
-			FROM {$wpdb->posts} p 
+			SELECT p.post_parent post_id
+			FROM {$wpdb->posts} p
 			INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id and pm.meta_key='_sku' and ( " . implode( " AND ", $_where ) . " )
 			WHERE p.post_parent <> 0
 			GROUP BY p.post_parent" );
@@ -1187,7 +1187,7 @@ if ( ! function_exists( 'ideapark_search_product_tag_ids' ) ) {
 
 		return $taxonomies ? $wpdb->get_col( "
 			SELECT t.term_id
-			FROM {$wpdb->terms} t 
+			FROM {$wpdb->terms} t
 			INNER JOIN {$wpdb->term_taxonomy} tt ON t.term_id = tt.term_id and tt.taxonomy IN ('" . implode( "','", $taxonomies ) . "')
 			WHERE " . implode( " AND ", $_where ) ) : [];
 	}
@@ -3980,14 +3980,14 @@ function enqueue_testimonial_slider_assets() {
                     2600: { items: 2.5, stagePadding: 400 },
                     3200: { items: 3.5, stagePadding: 450 },
                     3800: { items: 4.5, stagePadding: 450 }
-                    
+
                 },
                 navText: [
                     '<i class=\"ip-right-default h-carousel__prev\"></i>',
                     '<i class=\"ip-right-default h-carousel__next\"></i>'
                 ]
             });
-            
+
             // ✅ New featured blog carousel
             $('.featured-blogs-carousel').owlCarousel({
                 loop: true,
@@ -4006,7 +4006,7 @@ function enqueue_testimonial_slider_assets() {
                     }
                 }
             });
-            
+
         // ✅ Simple carousel with custom SVG nav icons
         $('.simple-slider').owlCarousel({
             loop: false,
@@ -4047,8 +4047,8 @@ function enqueue_testimonial_slider_assets() {
         });
 
 
-        
-                    
+
+
         });
     ");
 }
@@ -4160,5 +4160,20 @@ add_action('wp_enqueue_scripts', 'add_our_process_footer_scripts');
 //     repeat: -1
 //   });
 // });
+
+function moderno_enqueue_category_toggle_script() {
+    // Only load this script on the WooCommerce shop or category pages
+    if (is_shop() || is_product_category()) {
+        wp_enqueue_script(
+            'moderno-category-toggle',
+            get_template_directory_uri() . '/assets/js/category-toggle.js',
+            array('jquery'), // depends on jQuery
+            '1.0.0',
+            true // load in footer
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'moderno_enqueue_category_toggle_script');
+
 
 
