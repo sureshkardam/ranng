@@ -166,8 +166,8 @@ if ( $show_ordering || $show_breadcrumbs || $show_title || $show_categories ) { 
 		<?php if ( $show_ordering || $show_breadcrumbs ) {
 			if ( $show_ordering && $show_breadcrumbs ) { ?>
 				<div class="c-page-header__row-1 c-page-header__row-1--3-columns">
-					<div
-						class="c-page-header__row-1-col c-page-header__row-1-col--count"><?php woocommerce_result_count(); ?></div>
+					<?php /*<div
+						class="c-page-header__row-1-col c-page-header__row-1-col--count"><?php woocommerce_result_count(); ?></div>*/ ?>
 					<div
 						class="c-page-header__row-1-col c-page-header__row-1-col--breadcrumbs c-page-header__row-1-col--breadcrumbs-desktop">
 						<?php echo ideapark_wrap( $breadcrumbs ); ?>
@@ -179,8 +179,8 @@ if ( $show_ordering || $show_breadcrumbs || $show_title || $show_categories ) { 
 				</div>
 			<?php } elseif ( $show_ordering ) { ?>
 				<div class="c-page-header__row-1 c-page-header__row-1--2-columns">
-					<div
-						class="c-page-header__row-1-col c-page-header__row-1-col--count"><?php woocommerce_result_count(); ?></div>
+					<?php /*<div
+						class="c-page-header__row-1-col c-page-header__row-1-col--count"><?php woocommerce_result_count(); ?></div>*/ ?>
 					<div class="c-page-header__row-1-col c-page-header__row-1-col--ordering">
 						<?php woocommerce_catalog_ordering(); ?>
 						<?php echo ideapark_wrap( $filter ); ?>

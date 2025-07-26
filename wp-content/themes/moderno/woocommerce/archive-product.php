@@ -153,7 +153,12 @@ $terms = get_terms(array(
 				 *
 				 * @hooked woocommerce_pagination - 10
 				 */
-				do_action( 'woocommerce_after_shop_loop' );
+				?>
+				<div class="moderno-result-count-bottom">
+					<?php woocommerce_result_count(); ?>
+				</div>
+
+				<?php do_action( 'woocommerce_after_shop_loop' );
 			} else {
 				/**
 				 * Hook: woocommerce_no_products_found.
