@@ -71,6 +71,9 @@ $terms = get_terms(array(
             </li>
         <?php endforeach; ?>
     </ul>
+	<div>
+		<a href="#." download>Download full catalogue</a>
+	</div>
 </div>
 
 <div
