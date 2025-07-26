@@ -1,5 +1,5 @@
 <?php
-$ideapark_customize_mods_ver = "e3b345c3461bb21a84313f92a4523c3d";
+$ideapark_customize_mods_ver = "147f89efec0365b84523fe254bd0c67d";
 global $ideapark_customize;
 $ideapark_customize = [
 "0" => [
@@ -317,7 +317,7 @@ $ideapark_customize = [
 ],
 "sticky_logo_desktop_size" => [
 "label" => "Logo width in sticky menu (Desktop)",
-"default" => "160",
+"default" => 110,
 "type" => "slider",
 "sanitize_callback" => "ideapark_sanitize_abs_int",
 "class" => "WP_Customize_Range_Control",
@@ -366,8 +366,8 @@ $ideapark_customize = [
 "is_option" => true,
 "refresh" => true,
 "choices" => [
-"header-type-mobile-1" => "https://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/header-mobile-01.png",
-"header-type-mobile-2" => "https://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/header-mobile-02.png",
+"header-type-mobile-1" => "http://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/header-mobile-01.png",
+"header-type-mobile-2" => "http://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/header-mobile-02.png",
 ],
 ],
 "header_logo_centered_mobile" => [
@@ -2067,8 +2067,8 @@ $ideapark_customize = [
 "class" => "WP_Customize_Image_Radio_Control",
 "is_option" => true,
 "choices" => [
-"cover" => "https://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-cover.png",
-"contain" => "https://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-contain.png",
+"cover" => "http://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-cover.png",
+"contain" => "http://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-contain.png",
 ],
 ],
 "grid_image_prop" => [
@@ -2462,8 +2462,8 @@ $ideapark_customize = [
 "class" => "WP_Customize_Image_Radio_Control",
 "is_option" => true,
 "choices" => [
-"cover" => "https://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-cover.png",
-"contain" => "https://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-contain.png",
+"cover" => "http://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-cover.png",
+"contain" => "http://blessedhomez.com/ranng/wp-content/themes/moderno/assets/img/thumb-contain.png",
 ],
 ],
 "product_image_prop" => [
@@ -3283,7 +3283,7 @@ $ideapark_customize_mods_def = [
 "top_menu_item_space" => 17,
 "sticky_menu_desktop" => true,
 "sticky_logo_desktop_hide" => false,
-"sticky_logo_desktop_size" => "160",
+"sticky_logo_desktop_size" => 110,
 "sticky_logo_desktop_hide_text" => "",
 "header_type_mobile" => "header-type-mobile-1",
 "header_logo_centered_mobile" => false,
