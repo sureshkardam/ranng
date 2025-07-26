@@ -431,9 +431,6 @@
     background-color: #f3f3f3;
     color: #000;
 }
-.c-product-grid__category-item--brand {
-    display: none !important;
-}
 
 /* Wrap the button at the bottom of the image */
 .moderno-view-details-button {
