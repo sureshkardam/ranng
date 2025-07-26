@@ -1,0 +1,32 @@
+# Ignore image files (commonly used types)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.ico
+*.bmp
+*.tiff
+*.psd
+
+# Ignore OS and editor-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore backup/archives
+*.zip
+*.tar.gz
+*.rar
+*.bak
+*.log
+*.sql
+
+# Ignore common dev folders
+node_modules/
+vendor/
+.vscode/
+.idea/
+
+# Optional: Ignore uploads folder if you don’t want media files tracked
+# wp-content/uploads/
