@@ -3953,3 +3953,212 @@ add_action( 'after_setup_theme', 'ideapark_check_version', 1 );
 add_action( 'after_setup_theme', 'ideapark_setup' );
 ideapark_ra( 'init', [ 'WC_Regenerate_Images', 'init' ] );
 add_filter( 'woocommerce_resize_images', '__return_false' );
+
+
+
+
+// Owl Carousel CSS & JS enqueue + inline init
+function enqueue_testimonial_slider_assets() {
+    wp_enqueue_style('owl-carousel-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css');
+    wp_enqueue_style('owl-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css');
+    wp_enqueue_script('owl-carousel-js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', array('jquery'), null, true);
+    wp_add_inline_script('owl-carousel-js', "
+        jQuery(document).ready(function($) {
+            $('.testimonialsOwl').owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: false,
+                dots: true,
+                autoplay: false,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 1.5, stagePadding: 40 },
+                    1024: { items: 1.5, stagePadding: 100 },
+                    1920: { items: 1.5, stagePadding: 250 },
+                    2100: { items: 1.5, stagePadding: 400 },
+                    2600: { items: 2.5, stagePadding: 400 },
+                    3200: { items: 3.5, stagePadding: 450 },
+                    3800: { items: 4.5, stagePadding: 450 }
+                    
+                },
+                navText: [
+                    '<i class=\"ip-right-default h-carousel__prev\"></i>',
+                    '<i class=\"ip-right-default h-carousel__next\"></i>'
+                ]
+            });
+            
+            // ✅ New featured blog carousel
+            $('.featured-blogs-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1025: {
+                        items: 3
+                    }
+                }
+            });
+            
+        // ✅ Simple carousel with custom SVG nav icons
+        $('.simple-slider').owlCarousel({
+            loop: false,
+            margin: 24,
+            nav: true,
+            dots: false,
+            autoplay: false,
+            autoplayTimeout: 6000,
+            items: 1,
+            responsive: {
+                0: { items: 1 },
+                768: { items: 1.5, margin: 20 },
+                1024: { items: 2 }
+            },
+            navText: [
+                '<img src=\"/wp-content/uploads/2025/07/left-icon.svg\" alt=\"Prev\">',
+                '<img src=\"/wp-content/uploads/2025/07/right-icon.svg\" alt=\"Next\">'
+            ]
+        });
+
+
+        $('.milestone-slider').owlCarousel({
+            loop: false,
+            margin: 24,
+            nav: true,
+            dots: false,
+            nav: false,
+            dots: false,
+            responsive: {
+                0: { items: 1 },
+                768: { items: 2 },
+                1024: { items: 2.8 }
+            },
+            navText: [
+                '<img src=\"/wp-content/uploads/2025/07/left-icon.svg\" alt=\"Prev\">',
+                '<img src=\"/wp-content/uploads/2025/07/right-icon.svg\" alt=\"Next\">'
+            ]
+        });
+
+
+        
+                    
+        });
+    ");
+}
+add_action('wp_enqueue_scripts', 'enqueue_testimonial_slider_assets');
+
+// Elementor widget register
+function register_testimonial_slider_widget($widgets_manager) {
+    require_once get_template_directory() . '/widgets/testimonial-slider-widget.php';
+    $widgets_manager->register( new \Elementor\Testimonial_Slider_Widget() );
+}
+add_action('elementor/widgets/register', 'register_testimonial_slider_widget');
+
+function register_simple_slider_widget($widgets_manager) {
+    require_once get_template_directory() . '/widgets/simple-slider-widget.php';
+    $widgets_manager->register( new \Elementor\Simple_Slider_Widget() );
+}
+add_action('elementor/widgets/register', 'register_simple_slider_widget');
+
+function register_milestone_slider_widget($widgets_manager) {
+    require_once get_template_directory() . '/widgets/milestone-slider-widget.php';
+    $widgets_manager->register( new \Elementor\Milestone_Slider_Widget() );
+}
+add_action('elementor/widgets/register', 'register_milestone_slider_widget');
+
+function register_award_slider_widget( $widgets_manager ) {
+    require_once( get_template_directory() . '/widgets/Award_Slider_Widget.php' );
+    $widgets_manager->register( new \Elementor\Award_Slider_Widget() );
+}
+add_action( 'elementor/widgets/register', 'register_award_slider_widget' );
+
+
+
+function news_updates_featured_blogs() {
+    ob_start();
+    $args = array(
+        'posts_per_page' => 6,
+        'category_name'  => 'featured',
+        'post_status'    => 'publish'
+    );
+    $featured_query = new WP_Query($args);
+
+    if ($featured_query->have_posts()) : ?>
+        <div class="featured-blogs-carousel owl-carousel">
+            <?php while ($featured_query->have_posts()) : $featured_query->the_post(); ?>
+                <div class="blog-card">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <?php the_post_thumbnail('large', ['class' => 'blog-thumb']); ?>
+                        <?php endif; ?>
+                    </a>
+                    <div class="blog-info">
+                        <h3 class="blog-title"><?php the_title(); ?></h3>
+                        <p class="blog-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 16, '...'); ?></p>
+                        <a class="read-more" href="<?php the_permalink(); ?>">Read more</a>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        </div>
+    <?php endif;
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode('news_updates_featured', 'news_updates_featured_blogs');
+
+function add_our_process_footer_scripts() {
+    // GSAP Core
+    wp_enqueue_script(
+        'gsap-js',
+        get_template_directory_uri() . '/assets/js/gsap.min.js',
+        array(),
+        false,
+        true
+    );
+
+    // GSAP ScrollTrigger Plugin
+    wp_enqueue_script(
+        'gsap-scrolltrigger-js',
+        get_template_directory_uri() . '/assets/js/ScrollTrigger.min.js',
+        array('gsap-js'),
+        false,
+        true
+    );
+
+    // GSAP DrawSVGPlugin
+    wp_enqueue_script(
+        'gsap-drawsvg-js',
+        get_template_directory_uri() . '/assets/js/DrawSVGPlugin.min.js',
+        array('gsap-js'),
+        false,
+        true
+    );
+
+    // Your custom script - thread-needle.js
+    wp_enqueue_script(
+        'thread-needle-js',
+        get_template_directory_uri() . '/assets/js/thread-needle.js',
+        array('gsap-js', 'gsap-scrolltrigger-js', 'gsap-drawsvg-js'), // Set correct dependencies!
+        false,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'add_our_process_footer_scripts');
+
+// jQuery(document).ready(function ($) {
+//   gsap.to(".award-slider-track", {
+//     xPercent: -50,
+//     duration: 20,
+//     ease: "linear",
+//     repeat: -1
+//   });
+// });
+
+

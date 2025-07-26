@@ -6,6 +6,7 @@
 	<meta name="format-detection" content="telephone=no"/>
 	<link rel="profile" href="//gmpg.org/xfn/11">
 	<?php wp_head(); ?>
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/custom-style.css?v=<?php echo time(); ?>"> 
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
