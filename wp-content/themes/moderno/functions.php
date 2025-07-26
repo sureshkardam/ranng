@@ -4181,3 +4181,19 @@ function moderno_output_product_sku() {
     }
 }
 add_action( 'woocommerce_shop_loop_item_sku', 'moderno_output_product_sku', 5 );
+
+
+add_action('after_setup_theme', function () {
+    // Remove the previous buttons
+    remove_action( 'woocommerce_before_shop_loop_item_title', 'ideapark_template_product_buttons', 10 );
+    remove_action( 'woocommerce_before_shop_loop_item_title', 'ideapark_grid_atc', 10 );
+
+    // Add View Details button just after product image
+    add_action( 'woocommerce_before_shop_loop_item_title', function () {
+        global $product;
+        echo '<div class="moderno-view-details-button">';
+        echo '<a href="' . esc_url( get_permalink( $product->get_id() ) ) . '" class="button">View Details</a>';
+        echo '</div>';
+    }, 15 ); // <-- priority 15 puts it after the image
+});
+

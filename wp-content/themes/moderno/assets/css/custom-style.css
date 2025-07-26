@@ -434,3 +434,30 @@
 .c-product-grid__category-item--brand {
     display: none !important;
 }
+
+/* Wrap the button at the bottom of the image */
+.moderno-view-details-button {
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+/* Style the button */
+.moderno-view-details-button .button {
+    background-color: #1a3c3c;
+    color: #fff;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+/* Hover effect */
+.moderno-view-details-button .button:hover {
+    background-color: #326e6e;
+}
+
+
