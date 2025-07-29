@@ -70,9 +70,11 @@ class Award_Slider_Widget extends Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         
+        
         if (!empty($settings['items'])) :
             echo '<div class="award-slider-wrapper">';
             echo '<div class="award-slider-track">';
+            
             foreach ($settings['items'] as $item) :
                 $img = $item['image']['url'] ?? '';
                 $title = $item['title'] ?? '';
@@ -81,95 +83,14 @@ class Award_Slider_Widget extends Widget_Base {
                 $nofollow = $item['link']['nofollow'] ? ' rel="nofollow"' : '';
                 ?>
                 
-                <style>
-        .award-slider-wrapper {
-            overflow: hidden;
-            width: 100%;
-        }
-        
-        .award-slider-track {
-            display: flex;
-            white-space: nowrap;
-        }
-        
-        .award-slide-item {
-            display: inline-block;
-            margin-right: 40px;
-        }
-        .award-slide-item p{
-font-size: 18px;
-    text-transform: capitalize;
-    line-height: 24px;
-    font-weight: 500;
-    padding: 0 !important;
-    margin-bottom: 10px;
-    margin-top: 10px;
-color: #242424;
-width: 98%;
-margin: auto;
-display: block;
-text-align: center;
-white-space: wrap;
-}
-.award-slide-item img{
-    border-radius: 16px;
-}
-.award-slider-track{
-    margin-left: 40px;
-}
-.award-slide-item {
-    width: calc((100% / 5) - 40px); /* Desktop default */
-    margin-right: 40px;
-}
-.award-slider-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Left fade overlay */
-.award-slider-wrapper::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 80px; /* adjust width as per need */
-  height: 100%;
-  pointer-events: none; /* so that clicks pass through */
-  background: linear-gradient(to right, white 0%, transparent 100%);
-  z-index: 10;
-}
-
-/* Right fade overlay */
-.award-slider-wrapper::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 80px; /* adjust width as per need */
-  height: 100%;
-  pointer-events: none;
-  background: linear-gradient(to left, white 0%, transparent 100%);
-  z-index: 10;
-}
-
-@media (max-width: 1024px) {
-    .award-slide-item {
-        width: calc((100% / 4) - 40px);
-    }
-}
-
-@media (max-width: 767px) {
-    .award-slide-item {
-        width: calc((100% / 2) - 40px);
-    }
-}
-
-        </style>
+               
                 <div class="award-slide-item">
                     <a href="<?= esc_url($link); ?>"<?= $target . $nofollow ?>>
-                        <?php if ($img): ?>
-                            <img src="<?= esc_url($img); ?>" alt="<?= esc_attr($title); ?>" />
-                        <?php endif; ?>
+                        <div class="award-image">
+                            <?php if ($img): ?>
+                                <img src="<?= esc_url($img); ?>" alt="<?= esc_attr($title); ?>" />
+                             <?php endif; ?>
+                        </div>
                         <p><?= esc_html($title); ?></p>
                     </a>
                 </div>
@@ -258,5 +179,103 @@ add_action('wp_footer', function () {
 });
 
     </script>
+     <style>
+        .award-slider-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .award-slider-track {
+            display: flex;
+            white-space: nowrap;
+        }
+        
+        .award-slide-item {
+            display: inline-block;
+            margin-right: 40px;
+        }
+        .award-slide-item p{
+font-size: 16px;
+    text-transform: capitalize;
+    line-height: 24px;
+    font-weight: 500;
+    padding: 0 !important;
+    margin-bottom: 10px;
+    margin-top: 10px;
+color: #242424;
+width: 98%;
+margin: auto;
+display: block;
+text-align: center;
+white-space: wrap;
+}
+
+.award-slide-item img{
+    border-radius: 16px;
+    aspect-ratio:1/1;
+    
+}
+.award-slider-track{
+    margin-left: 40px;
+}
+.award-slide-item {
+    width: calc((100% / 5) - 40px); /* Desktop default */
+    margin-right: 40px;
+}
+.award-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left fade overlay */
+.award-slider-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px; /* adjust width as per need */
+  height: 100%;
+  pointer-events: none; /* so that clicks pass through */
+  background: linear-gradient(to right, white 0%, transparent 100%);
+  z-index: 10;
+}
+
+/* Right fade overlay */
+.award-slider-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px; /* adjust width as per need */
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to left, white 0%, transparent 100%);
+  z-index: 10;
+}
+.award-image{
+    aspect-ratio: 1/1;
+    
+}
+.award-image img{
+    width: 100%;
+}
+.award-slide-item a{
+    display: block !important;
+}
+@media (max-width: 1024px) {
+    .award-slide-item {
+        width: calc((100% / 4) - 40px);
+    }
+}
+
+@media (max-width: 767px) {
+    .award-slide-item {
+        width: 200px !important;
+        margin-right: 20px !important;
+    }
+}
+
+        </style>
     <?php
 });
+

@@ -157,7 +157,7 @@ if ( $filter = ideapark_filter_button( 'js-page-header-filter' ) ) {
 
 if ( $show_ordering || $show_breadcrumbs || $show_title || $show_categories ) { ?>
 	<header
-		class="l-section c-page-header c-page-header--<?php echo esc_attr( ideapark_mod( 'header_type' ) ); ?>
+		class="l-section c-page-header d_none c-page-header--<?php echo esc_attr( ideapark_mod( 'header_type' ) ); ?>
 <?php if ( $header_class ) { ?> c-page-header--<?php echo esc_attr( $header_class ); ?><?php } ?>
 <?php if ( $header_class_add ) { ?> c-page-header--<?php echo esc_attr( $header_class_add ); ?><?php } ?>
 <?php if ( $header_height ) { ?> c-page-header--<?php echo esc_attr( $header_height ); ?><?php } ?>

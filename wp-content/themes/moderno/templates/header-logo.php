@@ -1,5 +1,5 @@
 <div
-	class="c-header__logo c-header__logo--desktop<?php if ( ideapark_mod( 'logo' ) && ideapark_mod( 'logo_sticky' ) ) { ?> c-header__logo--sticky<?php } ?> <?php ideapark_class( ideapark_mod( 'sticky_menu_desktop' ) && ideapark_mod( 'sticky_logo_desktop_hide' ), 'c-header__logo--sticky-hide' ); ?>">
+	class="c-header__logo csp c-header__logo--desktop<?php if ( ideapark_mod( 'logo' ) && ideapark_mod( 'logo_sticky' ) ) { ?> c-header__logo--sticky<?php } ?> <?php ideapark_class( ideapark_mod( 'sticky_menu_desktop' ) && ideapark_mod( 'sticky_logo_desktop_hide' ), 'c-header__logo--sticky-hide' ); ?>">
 	<?php if ( ! is_front_page() || ! ideapark_mod( 'remove_frontpage_logo_link' ) ) { ?>
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="c-header__logo-link"><?php } ?>
 		<?php $logo_url = ideapark_mod( 'logo' ); ?>

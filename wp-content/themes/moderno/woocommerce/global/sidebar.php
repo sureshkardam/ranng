@@ -27,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$with_filter_desktop = ! ideapark_mod( 'shop_sidebar' ) && is_active_sidebar( 'shop-sidebar' );
 		$with_filter_mobile  = is_active_sidebar( 'filter-sidebar' ) || ideapark_mod( 'single_sidebar' ) && is_active_sidebar( 'shop-sidebar' );
 		?>
+		<div class="widget-title sidebar-title">Filters</div>
 		<div
 			class="c-sidebar <?php if ( ideapark_mod( 'collapse_filters' ) ) { ?> c-sidebar--collapse<?php } ?> c-shop-sidebar<?php if ( ideapark_mod( 'single_sidebar' ) ) { ?> c-shop-sidebar--single<?php } ?> <?php ideapark_class( $with_filter_desktop, 'c-shop-sidebar--desktop-filter', 'c-shop-sidebar--desktop-sidebar' ); ?> js-shop-sidebar <?php ideapark_class( $with_sidebar && ideapark_mod( 'sticky_sidebar' ), 'js-sticky-sidebar' ); ?>" data-no-offset="yes">
 			<div class="c-shop-sidebar__wrap js-shop-sidebar-wrap">

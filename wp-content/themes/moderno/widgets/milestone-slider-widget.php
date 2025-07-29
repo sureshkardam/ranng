@@ -197,31 +197,22 @@ class Milestone_Slider_Widget extends Widget_Base {
     color: #333333;
     margin-bottom: 0px;
 }
-/*.milestone-more-content {*/
-/*    height: 0;*/
-/*    opacity: 0;*/
-/*    overflow: hidden;*/
-/*    transition: all 0.4s ease-in-out;*/
-/*}*/
-/*.milestone-item:hover .milestone-more-content {*/
-/*    height: auto;*/
-/*    opacity: 1;*/
-/*    margin-top: 16px;*/
-/*}*/
-/*.milestone-slider .owl-stage:before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    top: -125px;*/
-/*    left: -125px;*/
-/*    background-image: url(https://new.ranngglobal.com/wp-content/uploads/2025/07/Needle-thread.svg);*/
-/*    width: 100%;*/
-/*    height: 70px;*/
-/*    z-index: 999;*/
-/*    background-size: contain;*/
-/*    background-repeat: no-repeat;*/
-/*}*/
 .milestone-more-content {
-    margin-top: 24px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+.milestone-item:hover .milestone-more-content {
+    height: auto;
+    opacity: 1;
+    /*margin-top: 16px;*/
+}
+.svg-thread:before{
+    background-image: url(https://new.ranngglobal.com/wp-content/uploads/2025/07/Needle-thread.svg);
+}
+.milestone-more-content {
+    margin-top: 16px;
 }
 .milestone-more-content .read-more{
     margin-top: 24px;
@@ -235,6 +226,39 @@ class Milestone_Slider_Widget extends Widget_Base {
     letter-spacing: 0;
     color: #777777;
     margin: 0;
+}
+.our-journey .milestone-item {
+    padding: 0 !important;
+    flex-direction: column-reverse !important;
+    min-height: auto !important;
+    background: transparent !important;
+    gap: 24px;
+}
+.our-journey .milestone-more-content {
+    display: none !important;
+}
+.our-journey .milestone-title,
+.our-journey .milestone-text{
+    color: #242424 !important;
+}
+.our-journey .milestone-image{
+    width: 100% !important;
+    height: auto !important;
+    /*min-height: 290px;*/
+    border-radius: 16px;
+    overflow: hidden;
+}
+.our-journey .milestone-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.our-journey .milestone-year {
+    background:#2A7D7D;
+    color: #EEEBE2;
+}
+.our-journey.svg-thread:before{
+     background-image: url(https://new.ranngglobal.com/wp-content/uploads/2025/07/needle-thread.svg) !important;
 }
 </style>
 
@@ -252,19 +276,21 @@ class Milestone_Slider_Widget extends Widget_Base {
                         <img src="<?php echo esc_url($item['milestone_image']['url']); ?>" alt="Milestone Image">
                     <?php endif; ?>
                 </div>
-                <div class="milestone-title"><?php echo esc_html($item['milestone_title']); ?></div>
-                <div class="milestone-text"><?php echo esc_html($item['milestone_text']); ?></div>
-
-                <?php /*    
-                <div class="milestone-more-content">
-                    <?php echo wp_kses_post($item['milestone_more_content']); ?>
-                    <?php if ( ! empty( $item['milestone_button']['url'] ) ) : ?>
-                        <a href="<?php echo esc_url( $item['milestone_button']['url'] ); ?>" class="read-more" <?php echo $item['milestone_button']['is_external'] ? 'target="_blank"' : ''; ?> <?php echo $item['milestone_button']['nofollow'] ? 'rel="nofollow"' : ''; ?>>
-                            <?php _e( 'Read More', 'text-domain' ); ?>
-                        </a>
-                    <?php endif; ?>
+                <div class="content-part">
+                    <div class="milestone-title"><?php echo esc_html($item['milestone_title']); ?></div>
+                    <div class="milestone-text"><?php echo esc_html($item['milestone_text']); ?></div>
+    
+                      
+                    <div class="milestone-more-content">
+                        <?php echo wp_kses_post($item['milestone_more_content']); ?>
+                        <?php if ( ! empty( $item['milestone_button']['url'] ) ) : ?>
+                            <a href="<?php echo esc_url( $item['milestone_button']['url'] ); ?>" class="read-more" <?php echo $item['milestone_button']['is_external'] ? 'target="_blank"' : ''; ?> <?php echo $item['milestone_button']['nofollow'] ? 'rel="nofollow"' : ''; ?>>
+                                <?php _e( 'Read More', 'text-domain' ); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                */ ?>
+                
                 
             </div>
             <?php endforeach; ?>

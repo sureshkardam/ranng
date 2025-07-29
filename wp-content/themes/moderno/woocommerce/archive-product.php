@@ -41,41 +41,6 @@ global $ideapark_category_html_top, $ideapark_category_html_bottom, $ideapark_ca
 do_action( 'woocommerce_before_main_content' );
 ?>
 
-<?php
-// Show top-level product categories with subcategories toggle
-$terms = get_terms(array(
-    'taxonomy' => 'product_cat',
-    'parent' => 0,
-    'hide_empty' => true,
-));
-?>
-<div class="moderno-category-toggle-wrapper">
-    <ul class="moderno-main-category-list">
-        <?php foreach ($terms as $term): ?>
-            <li class="moderno-main-category" data-category-id="<?php echo $term->term_id; ?>">
-                <span><?php echo $term->name; ?></span>
-
-                <?php
-                $subterms = get_terms(array(
-                    'taxonomy' => 'product_cat',
-                    'parent' => $term->term_id,
-                    'hide_empty' => false,
-                ));
-                if (!empty($subterms)): ?>
-                    <ul class="moderno-subcategory-list">
-                        <?php foreach ($subterms as $sub): ?>
-                            <li><a href="<?php echo get_term_link($sub); ?>"><?php echo $sub->name; ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-	<div>
-		<a href="#." download>Download full catalogue</a>
-	</div>
-</div>
-
 <div
 	class="l-section<?php if ( ideapark_mod( 'product_grid_width' ) == 'boxed' ) { ?> l-section--container <?php } else { ?><?php } ?> l-section--bottom-margin<?php if ( $with_sidebar ) { ?> l-section--with-sidebar<?php } ?>">
 	<?php if ( $with_sidebar || $with_filter_mobile || $with_filter_desktop ) { ?>
@@ -127,6 +92,41 @@ $terms = get_terms(array(
 				do_action( 'woocommerce_before_shop_loop' );
 
 				?>
+				<?php
+					// Show top-level product categories with subcategories toggle
+					$terms = get_terms(array(
+						'taxonomy' => 'product_cat',
+						'parent' => 0,
+						'hide_empty' => true,
+					));
+					?>
+					<div class="moderno-category-toggle-wrapper">
+						<ul class="moderno-main-category-list">
+							<?php foreach ($terms as $term): ?>
+								<li class="moderno-main-category" data-category-id="<?php echo $term->term_id; ?>">
+									<span><?php echo $term->name; ?></span>
+
+									<?php
+									$subterms = get_terms(array(
+										'taxonomy' => 'product_cat',
+										'parent' => $term->term_id,
+										'hide_empty' => false,
+									));
+									if (!empty($subterms)): ?>
+										<ul class="moderno-subcategory-list">
+											<?php foreach ($subterms as $sub): ?>
+												<li><a href="<?php echo get_term_link($sub); ?>"><?php echo $sub->name; ?></a></li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+						<div>
+							<a href="#." download>Download full catalogue</a>
+						</div>
+					</div>
+
 				<div class="c-product-grid"><?php
 					woocommerce_product_loop_start();
 					if ( ! function_exists( 'wc_get_loop_prop' ) || wc_get_loop_prop( 'total' ) ) {

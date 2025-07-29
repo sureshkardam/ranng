@@ -3964,29 +3964,7 @@ function enqueue_testimonial_slider_assets() {
     wp_enqueue_script('owl-carousel-js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', array('jquery'), null, true);
     wp_add_inline_script('owl-carousel-js', "
         jQuery(document).ready(function($) {
-            $('.testimonialsOwl').owlCarousel({
-                loop: true,
-                margin: 30,
-                nav: false,
-                dots: true,
-                autoplay: false,
-                autoplayTimeout: 6000,
-                responsive: {
-                    0: { items: 1 },
-                    768: { items: 1.5, stagePadding: 40 },
-                    1024: { items: 1.5, stagePadding: 100 },
-                    1920: { items: 1.5, stagePadding: 250 },
-                    2100: { items: 1.5, stagePadding: 400 },
-                    2600: { items: 2.5, stagePadding: 400 },
-                    3200: { items: 3.5, stagePadding: 450 },
-                    3800: { items: 4.5, stagePadding: 450 }
-
-                },
-                navText: [
-                    '<i class=\"ip-right-default h-carousel__prev\"></i>',
-                    '<i class=\"ip-right-default h-carousel__next\"></i>'
-                ]
-            });
+            
 
             // ✅ New featured blog carousel
             $('.featured-blogs-carousel').owlCarousel({
@@ -4013,8 +3991,8 @@ function enqueue_testimonial_slider_assets() {
             margin: 24,
             nav: true,
             dots: false,
-            autoplay: false,
-            autoplayTimeout: 6000,
+            autoplay: true,
+            autoplayTimeout: 4000,
             items: 1,
             responsive: {
                 0: { items: 1 },
@@ -4046,9 +4024,51 @@ function enqueue_testimonial_slider_assets() {
             ]
         });
 
+         var owl = $('.leadership-slider').owlCarousel({
+            items: 1,
+            loop: false,
+            nav: false,
+            dots: false,
+            smartSpeed: 500
+        });
+    
+        $('.leader-thumb').on('click', function() {
+            var index = $(this).data('index');
+            owl.trigger('to.owl.carousel', [index, 500]);
+            $('.leader-thumb').removeClass('active');
+            $(this).addClass('active');
+        });
+    
+        // Default active
+        $('.leader-thumb').first().addClass('active');
+        
+        
+        $('.testimonialsOwl').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: false,
+            dots: true,
+            autoplay: false,
+            autoplayTimeout: 6000,
+            responsive: {
+                0: { items: 1 },
+                768: { items: 1.5, stagePadding: 40 },
+                1024: { items: 1.5, stagePadding: 100 },
+                1920: { items: 1.5, stagePadding: 250 },
+                2100: { items: 1.5, stagePadding: 400 },
+                2300: { items: 1.5, stagePadding: 400 },
+                2600: { items: 2.5, stagePadding: 400 }
 
-
-
+            },
+            navText: [
+                '<i class=\"ip-right-default h-carousel__prev\"></i>',
+                '<i class=\"ip-right-default h-carousel__next\"></i>'
+            ]
+        });
+       
+        
+        
+        
         });
     ");
 }
@@ -4078,6 +4098,13 @@ function register_award_slider_widget( $widgets_manager ) {
     $widgets_manager->register( new \Elementor\Award_Slider_Widget() );
 }
 add_action( 'elementor/widgets/register', 'register_award_slider_widget' );
+
+function register_leadership_slider_widget($widgets_manager) {
+    require_once get_template_directory() . '/widgets/leadership-slider-widget.php';
+    $widgets_manager->register( new \Elementor\Leadership_Slider_Widget() );
+}
+add_action('elementor/widgets/register', 'register_leadership_slider_widget');
+
 
 
 
@@ -4196,4 +4223,5 @@ add_action('after_setup_theme', function () {
         echo '</div>';
     }, 15 ); // <-- priority 15 puts it after the image
 });
+
 

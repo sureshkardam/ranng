@@ -6,7 +6,9 @@
 	<meta name="format-detection" content="telephone=no"/>
 	<link rel="profile" href="//gmpg.org/xfn/11">
 	<?php wp_head(); ?>
+	
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/custom-style.css?v=<?php echo time(); ?>"> 
+	 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/catalog.css?v=<?php echo time(); ?>">
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
@@ -54,11 +56,17 @@ global $ideapark_advert_bar;
 	<div
 		class="c-header__menu c-header--mobile c-header__menu--<?php echo esc_attr( $header_type_mobile ); ?> js-mobile-menu">
 		<div class="c-header__menu-shadow"></div>
-		<div class="c-header__menu-buttons">
+		<div class="c-header__menu-buttons menu-slide">
+		    <div class="menu-slide-logo">
+                    <img src="https://new.ranngglobal.com/wp-content/uploads/2025/07/Ranng-Logo-Solo-R-Teal-Hex-007979.svg"
+                		 alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
+                				class=""/>
+                </div>
+                <?php ideapark_close_button( 'js-mobile-menu-close' ); ?>
 			<button type="button" class="h-cb h-cb--svg c-header__menu-back js-mobile-menu-back"><i
 					class="ip-menu-back c-header__menu-back-svg"></i>
 			</button>
-			<?php ideapark_close_button( 'js-mobile-menu-close' ); ?>
+		    
 		</div>
 		<div class="c-header__menu-content c-header__menu-content--mobile-buttons-<?php echo ideapark_mod( 'bottom_buttons_mobile_locations' ); ?>">
 			<div class="c-header__menu-wrap js-mobile-menu-wrap"></div>
