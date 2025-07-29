@@ -397,94 +397,53 @@ display: block !important;
 }
 }
 /* Wrapper styling */
-.moderno-category-toggle-wrapper {
-    margin: 20px 0;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-/* Horizontal main category list */
 .moderno-main-category-list {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    margin-bottom: 20px;
+    padding-left: 0;
 }
 
-/* Main category button */
 .moderno-main-category {
-    position: relative;
     cursor: pointer;
-}
-
-.moderno-main-category > span {
-    display: inline-block;
-    padding: 10px 15px;
-    background: #e5f0ef;
+    padding: 10px 20px;
+    background: #fff;
+    border: 1px solid #d4e5e5;
     border-radius: 20px;
-    font-weight: bold;
-    transition: background 0.3s ease;
+    transition: background 0.3s;
+    display: block;
+    font-weight: 600;
+}
+.moderno-main-category.open {
+    background: #d4e5e5;
+    border-color: #b2d0d0;
 }
 
-.moderno-main-category:hover > span {
-    background: #c8dfdd;
-}
-
-/* Hidden subcategory list */
 .moderno-subcategory-list {
     display: none;
-    position: absolute;
-    top: 110%;
-    left: 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
     list-style: none;
-    background: #ffffff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    z-index: 999;
-    width: max-content;
-    min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0;
 }
-
-/* Show subcategory list when .open class is added */
-.moderno-main-category.open > .moderno-subcategory-list {
-    display: block;
-}
-
-/* Optional: style subcategory links */
 .moderno-subcategory-list li a {
     display: block;
-    padding: 5px 10px;
-    color: #333;
-    text-decoration: none;
-}
-
-.moderno-subcategory-list li a:hover {
-    background-color: #f3f3f3;
-    color: #000;
-}
-
-/* Wrap the button at the bottom of the image */
-.moderno-view-details-button {
-    position: relative;
+    padding: 10px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     text-align: center;
-    margin-top: 10px;
-    padding-top: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s, transform 0.2s;
+}
+.moderno-subcategory-list li a:hover {
+    background: #e0f2f1;
+    transform: translateY(-3px);
 }
 
-/* Style the button */
-.moderno-view-details-button .button {
-    background-color: #1a3c3c;
-    color: #fff;
-    padding: 8px 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 4px;
-    display: inline-block;
-    transition: background 0.3s ease;
-}
 
 /* Hover effect */
 .moderno-view-details-button .button:hover {

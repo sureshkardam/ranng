@@ -59,7 +59,7 @@ do_action( 'woocommerce_before_main_content' );
 
 
 	<div
-		class="l-section__content<?php if ( $with_sidebar ) { ?> l-section__content--with-sidebar<?php } ?>">
+		class="l-section__content<?php if ( $with_sidebar ) { ?> l-section__content--with-sidebar<?php } ?> catalogue-list">
 		<div
 			class="<?php ideapark_class( $with_sidebar && ideapark_mod( 'sticky_sidebar' ), 'js-sticky-sidebar-nearby' ); ?>">
 
@@ -101,31 +101,42 @@ do_action( 'woocommerce_before_main_content' );
 					));
 					?>
 					<div class="moderno-category-toggle-wrapper">
-						<ul class="moderno-main-category-list">
-							<?php foreach ($terms as $term): ?>
-								<li class="moderno-main-category" data-category-id="<?php echo $term->term_id; ?>">
-									<span><?php echo $term->name; ?></span>
+                        <ul class="moderno-main-category-list">
+                            <?php foreach ($terms as $term): ?>
+                                <li class="moderno-main-category" 
+                                    data-category-id="<?php echo $term->term_id; ?>">
+                                    <span><?php echo $term->name; ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    
+                        <?php foreach ($terms as $term): ?>
+                            <?php
+                            $subterms = get_terms(array(
+                                'taxonomy'   => 'product_cat',
+                                'parent'     => $term->term_id,
+                                'hide_empty' => false,
+                            ));
+                            if (!empty($subterms)): ?>
+                                <ul class="moderno-subcategory-list" 
+                                    data-parent-id="<?php echo $term->term_id; ?>" 
+                                    style="display:none;">
+                                    <?php foreach ($subterms as $sub): ?>
+                                        <li>
+                                            <a href="<?php echo get_term_link($sub); ?>">
+                                                <?php echo $sub->name; ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    
+                        <div class="download-btn">
+                            <a href="#." download>Download full catalogue</a>
+                        </div>
+                    </div>
 
-									<?php
-									$subterms = get_terms(array(
-										'taxonomy' => 'product_cat',
-										'parent' => $term->term_id,
-										'hide_empty' => false,
-									));
-									if (!empty($subterms)): ?>
-										<ul class="moderno-subcategory-list">
-											<?php foreach ($subterms as $sub): ?>
-												<li><a href="<?php echo get_term_link($sub); ?>"><?php echo $sub->name; ?></a></li>
-											<?php endforeach; ?>
-										</ul>
-									<?php endif; ?>
-								</li>
-							<?php endforeach; ?>
-						</ul>
-						<div>
-							<a href="#." download>Download full catalogue</a>
-						</div>
-					</div>
 
 				<div class="c-product-grid"><?php
 					woocommerce_product_loop_start();
@@ -156,9 +167,10 @@ do_action( 'woocommerce_before_main_content' );
 				?>
 				<div class="moderno-result-count-bottom">
 					<?php woocommerce_result_count(); ?>
+					<?php do_action( 'woocommerce_after_shop_loop' );?>
 				</div>
-
-				<?php do_action( 'woocommerce_after_shop_loop' );
+            <?php
+				
 			} else {
 				/**
 				 * Hook: woocommerce_no_products_found.

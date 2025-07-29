@@ -18,8 +18,11 @@
 
 .moderno-category-toggle-wrapper {
     display: flex;
-    justify-content: space-between;
     border: none;
+    position: relative;
+    flex-direction: column;
+    align-items: self-start;
+    padding-left: 40px;
 }
 
 .moderno-product-sku {
@@ -40,7 +43,14 @@
     text-align: center;
     padding: 0;
     margin: 0;
-    border-top: 1px solid #ccc;
+    font-weight: 600;
+    height: 0;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+.c-product-grid__thumb-wrap:hover .moderno-view-details-button {
+    height: 32px;
 }
 
 .moderno-view-details-button .button {
@@ -48,6 +58,24 @@
     background: none;
     color: #333;
     width: 100%;
+    display: flex;
+    padding: 5px 0;
+    border-top: 1px solid #ccc;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.moderno-view-details-button .button:before {
+    content: "\f107";
+    color: #2a7d7d;
+    font-family: theme-icons;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 .moderno-view-details-button .button:hover {
     background: none;
@@ -70,7 +98,20 @@
 
 .moderno-main-category > span {
     background: none;
-    border: 1px solid #c8dfdd;
+    /*border: 1px solid #c8dfdd;*/
+}
+.moderno-main-category > span:after {
+    content:"";
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-top: 1px solid #777;
+    border-right: 1px solid #777;
+    transform: rotate(135deg) translate(-3px, 2px);
+    margin-left: 10px;
+}
+.moderno-main-category.open > span:after {
+    transform: rotate(-45deg) translate(-1px, 2px);
 }
 
 .l-section__sidebar--boxed{
@@ -113,20 +154,29 @@
 
 .c-product-grid__list.c-product-grid__list--sidebar {
     row-gap: 40px;
-/*    column-gap: 20px; */
+    column-gap: 20px; 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
-
+.c-product-grid__list.c-product-grid__list--sidebar .c-product-grid__item {
+    width: auto;
+}
 
 
 .c-product-grid {
-    padding-bottom: 60px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 20px;
+    padding-bottom: 40px;
+    /*margin-bottom: 20px;*/
 }
 .moderno-result-count-bottom {
-    width: 49%;
-    display: inline-block;
+    margin-left: 40px;
+    border-top: 1px solid #ccc;
+    display: flex;
     vertical-align: middle;
+    justify-content: space-between;
+    padding: 25px 0;
+}
+.moderno-result-count-bottom p{
+    margin 0;
 }
 nav.woocommerce-pagination {
     width: 50%;
@@ -172,7 +222,7 @@ span.page-numbers:not(.dots), span.post-page-numbers:not(.dots) {
   justify-content: space-between;
 }
 .sidebar-title {
-    padding: 20px 0;
+    padding: 18px 0 17px;
     line-height: 44px;
     font-weight: 800;
     font-size: 16px;
@@ -183,4 +233,28 @@ span.page-numbers:not(.dots), span.post-page-numbers:not(.dots) {
     border-bottom: 1px solid #ccc;
     background: #fff;
     position: relative;
+}
+.l-section__content--with-sidebar.catalogue-list {
+    padding-top: 0;
+    border-top: 0;
+    padding-left: 0;
+}
+.catalogue-list .c-product-grid {
+    padding-top: 20px;
+    padding-left: 40px;
+    border-top: 1px solid #ccc;
+}
+.download-btn {
+    position: absolute;
+    right: 0;
+    top: 18px;
+}
+.owl-item > .c-product__slider-item {
+    border-radius: 20px;
+}
+.c-product__thumbs-item > button {
+    border-radius: 10px;
+}
+.c-product__thumbs-item.active:after{
+    border-radius: 1px;
 }
