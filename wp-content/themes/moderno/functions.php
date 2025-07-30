@@ -4225,3 +4225,34 @@ add_action('after_setup_theme', function () {
 });
 
 
+
+
+// Blog banner
+function ideapark_blog_html_blocks_render() {
+    global $ideapark_blog_html_top, $ideapark_blog_html_top_above, $post;
+
+    if ( ! is_home() ) {
+        return;
+    }
+
+    $blog_top_block_post_id = 4526; 
+
+    if ( get_post_status( $blog_top_block_post_id ) != 'publish' ) {
+        return;
+    }
+
+    $post = get_post( $blog_top_block_post_id );
+    if ( $post ) {
+        $page_content = apply_filters( 'the_content', $post->post_content );
+        $page_content = str_replace( ']]>', ']]&gt;', $page_content );
+        $page_content = '<div class="entry-content">' . $page_content . '</div>';
+
+        $ideapark_blog_html_top = $page_content;
+        $ideapark_blog_html_top_above = true;
+    }
+}
+
+add_action( 'template_redirect', 'ideapark_blog_html_blocks_render' );
+
+
+

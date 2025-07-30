@@ -1,6 +1,26 @@
 <?php get_header(); ?>
 <?php $with_sidebar = ideapark_mod( 'post_layout' ) == 'list' && is_active_sidebar( 'post-sidebar' ); ?>
 
+
+<?php if ( is_home() ) : ?>
+    <?php
+    global $ideapark_blog_html_top, $ideapark_blog_html_top_above;
+    if ( $ideapark_blog_html_top_above && $ideapark_blog_html_top ) :
+        echo '<div class="c-category-html c-category-html--top">' . $ideapark_blog_html_top . '</div>';
+    endif;
+    ?>
+<?php endif; ?>
+
+
+
+
+
+
+
+
+
+
+
 <div
 	class="c-blog c-blog--<?php echo ideapark_mod( 'post_layout' ); ?> l-section  <?php if ( $with_sidebar ) { ?> l-section--with-sidebar<?php } ?>">
 	<div

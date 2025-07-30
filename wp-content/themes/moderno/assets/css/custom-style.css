@@ -788,3 +788,123 @@ left: 50%;
         min-width: 600px;
     }
 }
+
+
+/*Blog Styling*/
+.c-blog__grid{
+    max-width: 1280px;
+    width: 100%;
+    margin: auto;
+    gap: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.c-blog__grid > article {
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    
+}
+.c-blog__grid > article:after{
+    border: none !important;
+}
+.c-blog__grid > article .c-post-list__wrap--grid{
+    padding: 24px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.c-blog__grid > article .c-post-list__wrap--grid .c-post-list__meta-category{
+    order: 1;
+    margin: 0 !important;
+}
+.c-post-list__meta-category .c-post-list__categories-item-link:first-child,
+.c-post-list__meta-category .c-post-list__categories-item-link:before{
+    display: none; 
+    
+}
+.c-post-list__meta-category .c-post-list__categories-item-link{
+     padding: 0 !important;
+     font-family: "JetBrains Mono", Sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #888888;
+
+}
+.c-post-list__continue{
+    display: none;
+}
+.c-post-list__header-link{
+    order: 2;
+}
+.c-post-list__header-link h2{
+    font-family: DM Sans;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: #333333;
+
+}
+.c-post-list__except{
+    margin: 0;
+    order: 3;
+}
+.c-post-list__except p{
+    font-family: DM Sans;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: #777777;
+}
+.c-post-list__spacer{
+    order: 4;
+    margin-top: -16px;
+}
+.c-post-list__meta-date{
+    border: none;
+    order: 5;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: DM Sans;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: #333333;
+    display: block;
+    line-height: normal;
+    margin-top: 10px !important;
+
+}
+.c-blog-wrap.c-blog-wrap--grid {
+    padding: 48px 0;
+    background: #F5F3F0;
+}
+@media (min-width:768px){
+    .c-blog__grid{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .c-blog__grid > article{
+        width: calc(50% - 40px/2);
+    }
+    .c-blog-wrap.c-blog-wrap--grid {
+    padding: 100px 0;
+}
+}
+@media (min-width:1025px){
+    .c-blog__grid > article{
+        width: calc(33.33% - 80px/3);
+    }
+    
+}
+@media (min-width: 1300px){
+    .c-blog__grid{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}

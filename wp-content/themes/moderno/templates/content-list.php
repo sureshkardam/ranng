@@ -23,7 +23,7 @@ $sizes = ideapark_mod( 'post_layout' ) == 'list' ? '(min-width: 768px) 500px, ca
 
 	<?php if ( $has_thumb ) { ?>
 		<div
-			class="c-post-list__thumb c-post-list__thumb--<?php echo esc_attr( $format ); ?> c-post-list__thumb--<?php echo esc_attr( ideapark_mod( 'post_layout' ) ); ?>">
+			class=" c-post-list__thumb c-post-list__thumb--<?php echo esc_attr( $format ); ?> c-post-list__thumb--<?php echo esc_attr( ideapark_mod( 'post_layout' ) ); ?>">
 			<?php if ( $format == 'gallery' && ! empty( $image_gallery ) ) { ?>
 				<div
 					class="c-post-list__carousel-list js-post-image-carousel h-carousel h-carousel--inner h-carousel--round h-carousel--flex h-carousel--dots-hide">

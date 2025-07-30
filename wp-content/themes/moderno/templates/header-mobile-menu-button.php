@@ -1,4 +1,4 @@
-<a href="#" class="pill-button onmobile">Get Quotation</a>
+<a href="/inquiry/" class="pill-button onmobile">Get Quotation</a>
 <style>
     @media (max-width:767px){
         .onmobile{

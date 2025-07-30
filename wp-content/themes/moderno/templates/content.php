@@ -48,10 +48,10 @@ if ( is_page() ) {
 <article
 	id="post-<?php the_ID(); ?>" <?php post_class( 'c-post c-post--' . esc_attr( $format ) . ( $with_sidebar ? ' c-post--sidebar' : ' c-post--no-sidebar' ) . ' c-post--' . ( is_page() ? 'page' : 'post' ) ); ?>>
 	<div
-		class="c-post__wrap <?php ideapark_class(is_page() , 'c-post__wrap--page', 'c-post__wrap--post' ); ?> <?php ideapark_class( $has_thumb, 'c-post__wrap--thumb', 'c-post__wrap--no-thumb' ); ?> <?php ideapark_class( $with_sidebar, 'c-post__wrap--sidebar', 'c-post__wrap--no-sidebar' ); ?>">
+		class="pates  c-post__wrap <?php ideapark_class(is_page() , 'c-post__wrap--page', 'c-post__wrap--post' ); ?> <?php ideapark_class( $has_thumb, 'c-post__wrap--thumb', 'c-post__wrap--no-thumb' ); ?> <?php ideapark_class( $with_sidebar, 'c-post__wrap--sidebar', 'c-post__wrap--no-sidebar' ); ?>">
 		<?php if ( $has_thumb && $format != 'standard' ) { ?>
 			<div
-				class="c-post__thumb c-post__thumb--<?php echo esc_attr( $format ); ?> <?php ideapark_class( has_post_thumbnail(), 'c-post__thumb--with-image', 'c-post__thumb--no-image' ); ?>">
+				class="raju c-post__thumb c-post__thumb--<?php echo esc_attr( $format ); ?> <?php ideapark_class( has_post_thumbnail(), 'c-post__thumb--with-image', 'c-post__thumb--no-image' ); ?>">
 				<?php if ( $format == 'gallery' && $image_gallery ) { ?>
 					<div
 						class="c-post__carousel-list js-post-image-carousel h-carousel h-carousel--inner h-carousel--hover h-carousel--dots-hide h-carousel--round">
