@@ -881,8 +881,12 @@ left: 50%;
 
 }
 .c-blog-wrap.c-blog-wrap--grid {
-    padding: 48px 0;
+    padding: 0px 0;
+    padding-bottom: 48px;
     background: #F5F3F0;
+}
+.heading-margin h2{
+    margin: 0 !important;
 }
 @media (min-width:768px){
     .c-blog__grid{
@@ -893,7 +897,8 @@ left: 50%;
         width: calc(50% - 40px/2);
     }
     .c-blog-wrap.c-blog-wrap--grid {
-    padding: 100px 0;
+    padding: 0px 0;
+    padding-bottom: 100px;
 }
 }
 @media (min-width:1025px){
